@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    /* scroll bar is always present on the side, so it doesnt affect width and style of pages with/without overflow*/
+    overflow-y: scroll;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    word-break: break-word;
+  }
+}
