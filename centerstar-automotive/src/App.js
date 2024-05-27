@@ -8,7 +8,7 @@ export default function App() {
     <div>
        <Router>
            <NavigationBar/>
-           <div className="app-body">
+           <div className="app-body bg-bg-back-color">
                <Routes>
                    <Route path="/" element={<HomePage/>}/>
                </Routes>
