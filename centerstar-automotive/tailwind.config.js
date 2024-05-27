@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'main-bkg': "url('/Users/nethbotheju/centerstar-automotive/centerstar-automotive/src/img/background.png')",
+        'main-bkg': "url('../img/background.png')",
       },
       colors: {
         "nav-color": "#0E0D0E",
