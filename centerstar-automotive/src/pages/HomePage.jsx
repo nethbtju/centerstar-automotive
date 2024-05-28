@@ -6,6 +6,7 @@ import card3 from "../img/card-assets/card3.jpg";
 import card4 from "../img/card-assets/card4.png"; 
 import card5 from "../img/card-assets/card5.jpg";
 import card6 from "../img/card-assets/card6.jpg";
+import Map from "../components/Map";
 
 function HomePage() {
   return (
@@ -31,13 +32,10 @@ function HomePage() {
               <div className="px-2"></div>
               <Card imageUrl={card6} title="And more..."/> {/* Pass card6 image and title */}
           </div>
-          <div className="flex justify-center pt-8 space-x-4">
-              <Card imageUrl={card4} title="Electrical"/> {/* Pass card4 image and title */}
-              <div className="px-2"></div>
-              <Card imageUrl={card5} title="Services"/> {/* Pass card5 image and title */}
-              <div className="px-2"></div>
-              <Card imageUrl={card6} title="And more..."/> {/* Pass card6 image and title */}
-          </div>
+          <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
+              Find us
+          </h3>
+          <Map address="4 Vesper Dr, Narre Warren VIC 3805"/>
       </div>
   );
 }

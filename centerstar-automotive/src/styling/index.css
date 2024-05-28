@@ -16,3 +16,6 @@
     @apply bg-bg-back-color;
   }
 }
+.map-container {
+  height: 400px;
+}
