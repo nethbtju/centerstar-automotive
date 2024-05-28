@@ -12,7 +12,10 @@ module.exports = {
         'highlight-color': "#D9D9D9",
         'card-grey-color': "#383838",
         'bg-grey-color': '#1C1C1C',
-      }
+      },
+      fontFamily: {
+        'inria': ['"Inria Serif"', 'serif'],
+      },
     },
   },
   plugins: [],

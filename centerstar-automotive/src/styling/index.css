@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    /* scroll bar is always present on the side, so it doesnt affect width and style of pages with/without overflow*/
+    /* scroll bar is always present on the side, so it doesnt affect width and style of pages with/without overflow */
     overflow-y: scroll;
   }
   .app-body {
