@@ -2,9 +2,10 @@ import React from "react"
 
 function HomePage() {
     return (
-        <div>
-            hi
+        <div className="w-full sm:w-[50%] bg-bg-grey-color opacity-50">
+            <p className="opacity-100">hello</p>
         </div>
+
     );
 }
 

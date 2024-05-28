@@ -7,6 +7,9 @@
     /* scroll bar is always present on the side, so it doesnt affect width and style of pages with/without overflow*/
     overflow-y: scroll;
   }
+  .app-body {
+    @apply bg-main-bkg bg-no-repeat bg-cover h-screen;
+  }
 
   * {
     box-sizing: border-box;
