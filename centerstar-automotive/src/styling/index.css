@@ -10,13 +10,9 @@
     overflow-y: scroll;
   }
   .app-body {
-    @apply bg-main-bkg bg-no-repeat bg-cover h-screen;
+    @apply bg-main-bkg h-screen bg-no-repeat bg-cover bg-bg-back-color;
   }
-
-  * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    word-break: break-word;
+  body {
+    @apply bg-bg-back-color;
   }
 }
