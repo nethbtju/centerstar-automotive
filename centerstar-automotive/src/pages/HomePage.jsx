@@ -9,7 +9,7 @@ import card6 from "../img/card-assets/card6.png";
 
 function HomePage() {
   return (
-    <div className="w-full sm:w-[50%] bg-bg-grey-color bg-opacity-50">
+    <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-50">
       <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
         Mercedes Benz Specialist
       </h1>
