@@ -3,7 +3,7 @@ import '@fontsource/inter'; // Make sure you have installed the font using npm/y
 
 const Card = ({ children, imageUrl, title }) => {
   return (
-    <div className="bg-card-grey-color rounded-md w-1/4 h-48 shadow-md relative overflow-hidden"> 
+    <div className="bg-card-grey-color rounded-md w-1/4 h-48 shadow-md relative overflow-hidden transform transition-transform hover:scale-105"> 
       <div className="h-11/20 w-full"> {/* Set height to 55% of the card */}
         <img src={imageUrl} alt="Card Image" className="w-full h-full object-cover" /> {/* Set image to fill its container */}
       </div>
