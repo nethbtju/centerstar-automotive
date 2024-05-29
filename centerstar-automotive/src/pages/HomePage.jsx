@@ -11,7 +11,7 @@ import ContactCard from "../components/ContactCard";
 
 function HomePage() {
   return (
-    <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-[200%]">
+    <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-[255%]">
       <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
         Mercedes Benz Specialist
       </h1>
@@ -36,7 +36,7 @@ function HomePage() {
 
       <ContactCard />
 
-      <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
+      <h3 className="font-inria text-white pt-20 pb-4 text-[32px] text-center">
         Find us
       </h3>
       <Map address="4 Vesper Dr, Narre Warren VIC 3805" />

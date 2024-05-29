@@ -22,7 +22,7 @@ const ContactCard = ({ children }) => {
               <input
                 type="text"
                 placeholder="Name"
-                className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-4 ml-9"
+                className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-1 ml-9"
                 style={{ borderRadius: '10px', border: '1px solid white' }}
               />
               <input
