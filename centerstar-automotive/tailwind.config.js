@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      width: {
+        '100': '26.5rem', 
+        '120': '30rem', 
+      },
       backgroundImage: {
         'main-bkg': "url('../img/background.png')",
       },
