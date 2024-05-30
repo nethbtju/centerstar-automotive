@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'main-bkg': "url('../img/background.png')",
+        'end-bkg': "url('../img/background-end.png')",
       },
       colors: {
         "nav-color": "#0E0D0E",

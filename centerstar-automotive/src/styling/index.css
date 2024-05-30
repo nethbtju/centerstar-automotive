@@ -12,10 +12,13 @@
   .app-body {
     @apply bg-main-bkg h-screen bg-no-repeat bg-cover bg-bg-back-color;
   }
+  .app-end {
+    @apply bg-end-bkg w-[100%] h-screen bg-no-repeat bg-cover bg-bg-back-color;
+  }
   body {
     @apply bg-bg-back-color;
   }
 }
 .map-container {
-  height: 400px;
+  height: 200px;
 }

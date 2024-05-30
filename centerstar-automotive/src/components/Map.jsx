@@ -50,7 +50,7 @@ function Map({ address }) {
 
     return (
         <div className="w-[100%] pb-16 pe-16 ps-16 rounded-2xl">
-            <div ref={mapContainer} className="map-container h-[200px] rounded-[8px] opacity-80" />
+            <div ref={mapContainer} className="h-72 rounded-[8px] opacity-80" />
         </div>
     );
 }
