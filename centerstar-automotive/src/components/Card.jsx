@@ -10,7 +10,7 @@ const Card = ({ children, imageUrl, title, keyName, content}) => {
     };
 
     return (
-        <div onClick={handleClick} className="hover:cursor-pointer bg-card-grey-color rounded-md w-1/4 shadow-md relative overflow-hidden transform transition-transform hover:scale-105">
+        <div onClick={handleClick} className="hover:cursor-pointer bg-card-grey-color rounded-md shadow-md relative overflow-hidden transform transition-transform hover:scale-105">
             <div className="h-11/20 w-full">
                 <img src={imageUrl} alt="Card Image" className="w-full h-36 overflow-hidden object-cover" />
             </div>

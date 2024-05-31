@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
 import Card from "../components/Card";
 import card1 from "../img/card-assets/card1.jpg";
@@ -23,16 +23,23 @@ function HomePage() {
         }
     }, [location]);
 
-    const [cardContent, setCardContent] = useState([]);
+    const [cardContent, setCardContent] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('/pageText.txt');
                 const data = response.data;
-                // Check if the key exists in the data
                 if (data) {
-                    setCardContent(data)
+                    const formattedData = {
+                        repairs: { title: data.repairs.title, card_text: data.repairs.card_text },
+                        diagnostics: { title: data.diagnostics.title, card_text: data.diagnostics.card_text },
+                        air_conditioning: { title: data.air_conditioning.title, card_text: data.air_conditioning.card_text },
+                        electrical: { title: data.electrical.title, card_text: data.electrical.card_text },
+                        services: { title: data.services.title, card_text: data.services.card_text },
+                        and_more: { title: data.and_more.title, card_text: data.and_more.card_text },
+                    };
+                    setCardContent(formattedData);
                 }
             } catch (error) {
                 console.error('Error fetching the data', error);
@@ -41,35 +48,34 @@ function HomePage() {
         fetchData();
     }, []);
 
-    if (cardContent.length === 0) {
-        // Render a loading indicator or placeholder content while fetching data
+    if (Object.keys(cardContent).length === 0) {
         return <div>Loading...</div>;
     }
 
+    const cardImages = [card1, card2, card3, card4, card5, card6];
+
     return (
-        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-[255%]">
+        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-auto">
             <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
                 Mercedes Benz Specialist
             </h1>
 
-            {/* First row of cards */}
-            <div className="flex justify-center pt-8 space-x-4 gap-8">
-                <Card imageUrl={card1} title={cardContent['repairs']['title']} keyName="repairs" content={cardContent['repairs']['content']}/> {/* Pass card1 image and title */}
-                <Card imageUrl={card2} title={cardContent['diagnostics']['title']} keyName="diagnostics"/> {/* Pass card2 image and title */}
-                <Card imageUrl={card3} title={cardContent['air_conditioning']['title']} keyName="air_conditioning"/> {/* Pass card3 image and title */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-20">
+                {Object.keys(cardContent).map((key, index) => (
+                    <Card
+                        keyName={key}
+                        imageUrl={cardImages[index]}
+                        title={cardContent[key].title}
+                        content={cardContent[key].card_text}
+                    />
+                ))}
             </div>
 
-            {/* Second row of cards */}
-            <div className="flex justify-center pt-8 space-x-4 gap-8">
-                <Card imageUrl={card4} title={cardContent['electrical']['title']} keyName="electrical"/> {/* Pass card4 image and title */}
-                <Card imageUrl={card5} title={cardContent['services']['title']} keyName="services"/> {/* Pass card5 image and title */}
-                <Card imageUrl={card6} title={cardContent['and_more']['title']} keyName="and_more"/> {/* Pass card6 image and title */}
-            </div>
             <ContactCard />
             <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
                 Find us
             </h3>
-            <Map address="4 Vesper Dr, Narre Warren VIC 3805"/>
+            <Map address="4 Vesper Dr, Narre Warren VIC 3805" />
         </div>
     );
 }
