@@ -95,9 +95,9 @@ function HomePage() {
             )}
             
             {/* SimpleAlert component to display email sending status */}
-      {showAlert && <SimpleAlert message={alertMessage} isSuccess={isSuccess} />}
+            {showAlert && <SimpleAlert message={alertMessage} isSuccess={isSuccess} />}
       
-            <ContactCard id="contact-card" />
+            <ContactCard id="contact-card" handleEmailSuccess={handleEmailSuccess} />
             <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
                 Find us
             </h3>
