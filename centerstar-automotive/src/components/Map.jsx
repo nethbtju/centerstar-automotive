@@ -7,8 +7,6 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibmV0aGIiLCJhIjoiY2x3cWQ3MXY4MDB4YjJpcTBwaWY4Z
 function Map({ address }) {
     const mapContainer = useRef(null);
     const map = useRef(null);
-    const [lng, setLng] = useState(null);
-    const [lat, setLat] = useState(null);
     const [zoom, setZoom] = useState(16);
 
     useEffect(() => {
@@ -25,8 +23,6 @@ function Map({ address }) {
             if (response && response.body && response.body.features && response.body.features.length) {
                 const feature = response.body.features[0];
                 const coordinates = feature.geometry.coordinates;
-                setLng(coordinates[0]);
-                setLat(coordinates[1]);
 
                 // Initialize the map with the coordinates
                 map.current = new mapboxgl.Map({
