@@ -1,3 +1,11 @@
+# Run Server and Client
+
+Ensure you are in root directory then run:
+
+```bash
+bash run.sh
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +76,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Resend Email Account
+Username: Centerstarautomotive@gmail.com
+Password: Nethmini@2002
+
+re_3M6ARjEN_LyqMxzsy9bFqLfQUKWhLGao5
