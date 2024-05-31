@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 import Card from "../components/Card";
 import card1 from "../img/card-assets/card1.jpg";
 import card2 from "../img/card-assets/card2.jpg";
@@ -10,51 +11,47 @@ import Map from "../components/Map";
 import ContactCard from "../components/ContactCard";
 
 function HomePage() {
-  return (
-    <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-[255%]">
-      <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
-        Mercedes Benz Specialist
-      </h1>
+    const location = useLocation();
 
-          {/* First row of cards */}
-          <div className="flex justify-center pt-8 space-x-4">
-              <Card imageUrl={card1} title="Repairs" keyName="repairs"/> {/* Pass card1 image and title */}
-              <div className="px-2"></div>
-              <Card imageUrl={card2} title="Diagnostic" keyName="diagnostics"/> {/* Pass card2 image and title */}
-              <div className="px-2"></div>
-              <Card imageUrl={card3} title="Air Conditioning" keyName="air_conditioning"/> {/* Pass card3 image and title */}
-          </div>
+    useEffect(() => {
+        if (location.state?.scrollToContact) {
+            const contactCard = document.getElementById("contact-card");
+            if (contactCard) {
+                contactCard.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, [location]);
 
-          {/* Second row of cards */}
-          <div className="flex justify-center pt-8 space-x-4">
-              <Card imageUrl={card4} title="Electrical" keyName="electrical"/> {/* Pass card4 image and title */}
-              <div className="px-2"></div>
-              <Card imageUrl={card5} title="Services" keyName="services"/> {/* Pass card5 image and title */}
-              <div className="px-2"></div>
-              <Card imageUrl={card6} title="And more..." keyName="and_more"/> {/* Pass card6 image and title */}
-          </div>
-          <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
-              Find us
-          </h3>
-          <Map address="4 Vesper Dr, Narre Warren VIC 3805"/>
+    return (
+        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-[255%]">
+            <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
+                Mercedes Benz Specialist
+            </h1>
 
-      {/* Second row of cards */}
-      <div className="flex justify-center pt-8 space-x-4">
-        <Card imageUrl={card4} title="Electrical" /> {/* Pass card4 image and title */}
-        <div className="px-2"></div>
-        <Card imageUrl={card5} title="Services" /> {/* Pass card5 image and title */}
-        <div className="px-2"></div>
-        <Card imageUrl={card6} title="And more..." /> {/* Pass card6 image and title */}
-      </div>
+            {/* First row of cards */}
+            <div className="flex justify-center pt-8 space-x-4">
+                <Card imageUrl={card1} title="Repairs" keyName="repairs"/> {/* Pass card1 image and title */}
+                <div className="px-2"></div>
+                <Card imageUrl={card2} title="Diagnostic" keyName="diagnostics"/> {/* Pass card2 image and title */}
+                <div className="px-2"></div>
+                <Card imageUrl={card3} title="Air Conditioning" keyName="air_conditioning"/> {/* Pass card3 image and title */}
+            </div>
 
-      <ContactCard />
-
-      <h3 className="font-inria text-white pt-20 pb-4 text-[32px] text-center">
-        Find us
-      </h3>
-      <Map address="4 Vesper Dr, Narre Warren VIC 3805" />
-    </div>
-  );
+            {/* Second row of cards */}
+            <div className="flex justify-center pt-8 space-x-4">
+                <Card imageUrl={card4} title="Electrical" keyName="electrical"/> {/* Pass card4 image and title */}
+                <div className="px-2"></div>
+                <Card imageUrl={card5} title="Services" keyName="services"/> {/* Pass card5 image and title */}
+                <div className="px-2"></div>
+                <Card imageUrl={card6} title="And more..." keyName="and_more"/> {/* Pass card6 image and title */}
+            </div>
+            <ContactCard />
+            <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
+                Find us
+            </h3>
+            <Map address="4 Vesper Dr, Narre Warren VIC 3805"/>
+        </div>
+    );
 }
 
 export default HomePage;

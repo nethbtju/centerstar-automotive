@@ -15,9 +15,11 @@ function AboutPage() {
             try {
                 const response = await axios.get('/pageText.txt');
                 const data = response.data;
-
+                console.log(key);
+                console.log(data);
                 // Check if the key exists in the data
                 if (data.hasOwnProperty(key)) {
+                    console.log(data);
                     const { title: contentTitle, content: contentText } = data[key];
                     setTitle(contentTitle);
                     // Split contentText into an array using newline character as separator

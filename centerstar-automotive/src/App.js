@@ -16,8 +16,6 @@ export default function App() {
                        <Route path="/about-us/:key" element={<AboutPage/>}/>
                    </Routes>
                </div>
-               <div className="app-end">
-               </div>
            </div>
        </Router>
     </div>

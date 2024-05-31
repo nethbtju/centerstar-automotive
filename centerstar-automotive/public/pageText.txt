@@ -22,5 +22,9 @@
   "and_more": {
     "title": "And More",
     "content": "Coding and modifications.\nTransmission and engine control unit coding.\nElectronic stability reprogramming.\nElectronic steering lock and EIS repair and modifications, Key duplicate\nSRS warning repair / modifications / resetting / Child seat detection repair.\nDPF system delete and modifications / NOx sensor modification / AdBlue system fault detection and modifications."
+  },
+  "main": {
+      "title": "About Us",
+      "content": "Sam"
   }
 }
