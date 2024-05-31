@@ -40,6 +40,7 @@ function HomePage() {
         Find us
       </h3>
       <Map address="4 Vesper Dr, Narre Warren VIC 3805" />
+
     </div>
   );
 }
