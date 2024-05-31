@@ -25,9 +25,9 @@ const ContactCard = ({ children }) => {
   const sendEmail = async () => {
     // Hardcoded values for testing
     const senderEmail = 'centerstar-inquiries@resend.dev';
-    const recipientEmail = 'rohitvalanki@gmail.com';
+    const recipientEmail = 'neth.b.ss@gmail.com';
     const subject = 'Test Email from Mao';
-    const message = '<p>This is a test email from the Contact Card component.</p>';
+    const message = '<p>This is a test email from the Contact Card Mao component.</p>';
 
     try {
       const response = await fetch('http://localhost:3001/send-email', {

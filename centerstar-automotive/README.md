@@ -1,3 +1,11 @@
+# Run Server and Client
+
+Ensure you are in root directory then run:
+
+```bash
+bash run.sh
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
