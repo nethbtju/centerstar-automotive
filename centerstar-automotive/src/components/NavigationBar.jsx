@@ -17,7 +17,7 @@ function NavigationBar() {
         } else {
             const contactCard = document.getElementById("contact-card");
             if (contactCard) {
-                contactCard.scrollIntoView({ behavior: 'smooth' });
+                contactCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
     };

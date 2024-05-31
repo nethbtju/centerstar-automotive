@@ -13,17 +13,8 @@ import axios from 'axios';
 
 function HomePage() {
     const location = useLocation();
-
-    useEffect(() => {
-        if (location.state?.scrollToContact) {
-            const contactCard = document.getElementById("contact-card");
-            if (contactCard) {
-                contactCard.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    }, [location]);
-
     const [cardContent, setCardContent] = useState({});
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -43,14 +34,21 @@ function HomePage() {
                 }
             } catch (error) {
                 console.error('Error fetching the data', error);
+            } finally {
+                setIsLoaded(true);
             }
         };
         fetchData();
     }, []);
 
-    if (Object.keys(cardContent).length === 0) {
-        return <div>Loading...</div>;
-    }
+    useEffect(() => {
+        if (isLoaded && location.state?.scrollToContact) {
+            const contactCard = document.getElementById("contact-card");
+            if (contactCard) {
+                contactCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }, [isLoaded, location]);
 
     const cardImages = [card1, card2, card3, card4, card5, card6];
 
@@ -60,18 +58,23 @@ function HomePage() {
                 Mercedes Benz Specialist
             </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-20">
-                {Object.keys(cardContent).map((key, index) => (
-                    <Card
-                        keyName={key}
-                        imageUrl={cardImages[index]}
-                        title={cardContent[key].title}
-                        content={cardContent[key].card_text}
-                    />
-                ))}
-            </div>
+            {Object.keys(cardContent).length === 0 ? (
+                <div className="text-white text-center">Loading cards...</div>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
+                    {Object.keys(cardContent).map((key, index) => (
+                        <Card
+                            key={key}
+                            keyName={key}
+                            imageUrl={cardImages[index]}
+                            title={cardContent[key].title}
+                            content={cardContent[key].card_text}
+                        />
+                    ))}
+                </div>
+            )}
 
-            <ContactCard />
+            <ContactCard id="contact-card" />
             <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
                 Find us
             </h3>
