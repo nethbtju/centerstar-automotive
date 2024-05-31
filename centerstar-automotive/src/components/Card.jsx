@@ -1,9 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '@fontsource/inter'; // Make sure you have installed the font using npm/yarn
 
-const Card = ({ children, imageUrl, title }) => {
+const Card = ({ children, imageUrl, title, keyName}) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/about-us/${keyName}`);
+    };
   return (
-    <div className="bg-card-grey-color rounded-md w-1/4 shadow-md relative overflow-hidden transform transition-transform hover:scale-105">
+    <div onClick={handleClick} className="hover:cursor-pointer bg-card-grey-color rounded-md w-1/4 shadow-md relative overflow-hidden transform transition-transform hover:scale-105">
       <div className="h-11/20 w-full"> {/* Set height to 55% of the card */}
         <img src={imageUrl} alt="Card Image" className="w-full h-36 overflow-hidden object-cover" /> {/* Set image to fill its container */}
       </div>

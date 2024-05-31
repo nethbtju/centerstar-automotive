@@ -1,0 +1,26 @@
+{
+  "repairs": {
+    "title": "Mercedes repairs",
+    "content": "Suspension Repairs - including ABC and Airmatic system.\nSuspension arms, Rubber bushing / control arm replacement / links / engine and transmission mounts.\nTransmission repair / replacing / overhauling / transmission torque converter repair / replacement.\nEngine repair / replacing / overhauling / timing chain replacement / cylinder head gaskets / thermostat / turbocharger / manifold and cooler system repair.\nEngine and body vibration repair works / wind noise / water leaks / DPF regeneration / exhaust system repair and replacements.\nBrake system repairs including SBC and ABR/ brake bleeding / A-Z all the running repairs works."
+  },
+  "diagnostics": {
+    "title": "Diagnostic works",
+    "content": "Vehicle LIMP mode diagnostic works/ engine misfiring / jerks / shuddering / power losses / Boost leaks / knocking noises.\nElectronic stability system errors / Suspension and damping system errors / level lowering / hard suspension drives / 7G -DCT automatic transmission errors / gear slipping / thumping.\nMercedes engine diagnosis on all the range.\nMB Pneumatic system leaks and Diagnosis\nRetractable hardtop and fabric top system operation hydraulic system fails.\nFuel system/ pump replacement / high pressure and low pressure system diagnostic / injector failure.\nAir body control system drive technology / Electric dual clutch transmission 7DCT300 / AdBlue system error components replacement.\nA-Z All the Diagnostic works"
+  },
+  "electrical": {
+    "title": "Electrical repairs",
+    "content": "Entire CAN system repairs / communication errors / dashboard malfunction / engine warning light / interior light and components failure / Telecommunication / navigation / lighting system errors / intelligent light system / control module diagnosis / Electric network system / Onboard electrical and bus system /CDI engine management system / NTG telematics system.\nCGI Engine management / Body CAN / flexRay -data - Telematics / MBUX / Intelligent drive system.\nHigh voltage on-board electrical system / MB intelligent drive / Agility select and magic body control system.\nA-Z All the electrical works"
+  },
+  "air_conditioning": {
+    "title": "Air conditioning",
+    "content": "All the Air condition repair works including AC compressor replacing / diagnosis / AC condenser Leak detecting and AC regas.\nAC Evaporator replacing / AC control module diagnosis"
+  },
+  "services": {
+    "title": "Services",
+    "content": "General And annual service and maintenance.\nTransmission service including 5 speed 7speed and 9speed transmission with Dual clutch and electric clutch.\nTransfer case servicing.\nRear differential servicing\nBrake fluid system / repair.\nEngine and drive train Cooling system / coolant flushing.\nBrakes and suspension service."
+  },
+  "and_more": {
+    "title": "And More",
+    "content": "Coding and modifications.\nTransmission and engine control unit coding.\nElectronic stability reprogramming.\nElectronic steering lock and EIS repair and modifications, Key duplicate\nSRS warning repair / modifications / resetting / Child seat detection repair.\nDPF system delete and modifications / NOx sensor modification / AdBlue system fault detection and modifications."
+  }
+}

@@ -16,14 +16,27 @@ function HomePage() {
         Mercedes Benz Specialist
       </h1>
 
-      {/* First row of cards */}
-      <div className="flex justify-center pt-8 space-x-4">
-        <Card imageUrl={card1} title="Repairs" /> {/* Pass card1 image and title */}
-        <div className="px-2"></div>
-        <Card imageUrl={card2} title="Diagnostic" /> {/* Pass card2 image and title */}
-        <div className="px-2"></div>
-        <Card imageUrl={card3} title="Air Conditioning" /> {/* Pass card3 image and title */}
-      </div>
+          {/* First row of cards */}
+          <div className="flex justify-center pt-8 space-x-4">
+              <Card imageUrl={card1} title="Repairs" keyName="repairs"/> {/* Pass card1 image and title */}
+              <div className="px-2"></div>
+              <Card imageUrl={card2} title="Diagnostic" keyName="diagnostics"/> {/* Pass card2 image and title */}
+              <div className="px-2"></div>
+              <Card imageUrl={card3} title="Air Conditioning" keyName="air_conditioning"/> {/* Pass card3 image and title */}
+          </div>
+
+          {/* Second row of cards */}
+          <div className="flex justify-center pt-8 space-x-4">
+              <Card imageUrl={card4} title="Electrical" keyName="electrical"/> {/* Pass card4 image and title */}
+              <div className="px-2"></div>
+              <Card imageUrl={card5} title="Services" keyName="services"/> {/* Pass card5 image and title */}
+              <div className="px-2"></div>
+              <Card imageUrl={card6} title="And more..." keyName="and_more"/> {/* Pass card6 image and title */}
+          </div>
+          <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
+              Find us
+          </h3>
+          <Map address="4 Vesper Dr, Narre Warren VIC 3805"/>
 
       {/* Second row of cards */}
       <div className="flex justify-center pt-8 space-x-4">
