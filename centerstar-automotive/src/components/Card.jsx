@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '@fontsource/inter';
 
-const Card = ({ children, imageUrl, title, keyName }) => {
+const Card = ({ children, imageUrl, title, keyName, content}) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -16,7 +16,7 @@ const Card = ({ children, imageUrl, title, keyName }) => {
             </div>
             <div className="h-9/20 w-full p-4">
                 <h2 className="font-inter text-white text-lg mb-2" style={{ fontWeight: 450 }}>{title}</h2>
-                <p className="font-inter text-white text-[12px] w-3/4" style={{ fontWeight: 100, marginTop: '-0.25rem' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                <p className="font-inter text-white text-[12px] w-3/4" style={{ fontWeight: 100, marginTop: '-0.25rem' }}>{content}</p>
                 {children}
             </div>
         </div>

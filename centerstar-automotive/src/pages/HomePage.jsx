@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import { useLocation } from 'react-router-dom';
 import Card from "../components/Card";
 import card1 from "../img/card-assets/card1.jpg";
@@ -9,6 +9,7 @@ import card5 from "../img/card-assets/card5.jpg";
 import card6 from "../img/card-assets/card6.jpg";
 import Map from "../components/Map";
 import ContactCard from "../components/ContactCard";
+import axios from 'axios';
 
 function HomePage() {
     const location = useLocation();
@@ -22,6 +23,29 @@ function HomePage() {
         }
     }, [location]);
 
+    const [cardContent, setCardContent] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/pageText.txt');
+                const data = response.data;
+                // Check if the key exists in the data
+                if (data) {
+                    setCardContent(data)
+                }
+            } catch (error) {
+                console.error('Error fetching the data', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    if (cardContent.length === 0) {
+        // Render a loading indicator or placeholder content while fetching data
+        return <div>Loading...</div>;
+    }
+
     return (
         <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-[255%]">
             <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
@@ -29,21 +53,17 @@ function HomePage() {
             </h1>
 
             {/* First row of cards */}
-            <div className="flex justify-center pt-8 space-x-4">
-                <Card imageUrl={card1} title="Repairs" keyName="repairs"/> {/* Pass card1 image and title */}
-                <div className="px-2"></div>
-                <Card imageUrl={card2} title="Diagnostic" keyName="diagnostics"/> {/* Pass card2 image and title */}
-                <div className="px-2"></div>
-                <Card imageUrl={card3} title="Air Conditioning" keyName="air_conditioning"/> {/* Pass card3 image and title */}
+            <div className="flex justify-center pt-8 space-x-4 gap-8">
+                <Card imageUrl={card1} title={cardContent['repairs']['title']} keyName="repairs" content={cardContent['repairs']['content']}/> {/* Pass card1 image and title */}
+                <Card imageUrl={card2} title={cardContent['diagnostics']['title']} keyName="diagnostics"/> {/* Pass card2 image and title */}
+                <Card imageUrl={card3} title={cardContent['air_conditioning']['title']} keyName="air_conditioning"/> {/* Pass card3 image and title */}
             </div>
 
             {/* Second row of cards */}
-            <div className="flex justify-center pt-8 space-x-4">
-                <Card imageUrl={card4} title="Electrical" keyName="electrical"/> {/* Pass card4 image and title */}
-                <div className="px-2"></div>
-                <Card imageUrl={card5} title="Services" keyName="services"/> {/* Pass card5 image and title */}
-                <div className="px-2"></div>
-                <Card imageUrl={card6} title="And more..." keyName="and_more"/> {/* Pass card6 image and title */}
+            <div className="flex justify-center pt-8 space-x-4 gap-8">
+                <Card imageUrl={card4} title={cardContent['electrical']['title']} keyName="electrical"/> {/* Pass card4 image and title */}
+                <Card imageUrl={card5} title={cardContent['services']['title']} keyName="services"/> {/* Pass card5 image and title */}
+                <Card imageUrl={card6} title={cardContent['and_more']['title']} keyName="and_more"/> {/* Pass card6 image and title */}
             </div>
             <ContactCard />
             <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
