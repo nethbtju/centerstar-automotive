@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import logo from '../img/contact-card-image.png';
+import SimpleAlert from './SimpleAlert'; // Import SimpleAlert component
 
 const svgIcon = (
   <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +21,7 @@ const validatePhoneNumber = (phoneNumber) => {
   return phoneRegex.test(phoneNumber);
 };
 
-const ContactCard = ({ children }) => {
+const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSuccess prop
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -45,57 +46,64 @@ const ContactCard = ({ children }) => {
     setEmailError(validateEmail(email) ? '' : 'Enter a valid email address');
     setPhoneError(validatePhoneNumber(phone) ? '' : 'Enter a valid phone number');
 
-    // Log form data to console
-    console.log('Form Data:', formData);
+    if (validateEmail(email) && validatePhoneNumber(phone)) {
+      // Hardcoded values for testing
+      const senderEmail = 'centerstar-inquiries@resend.dev';
+      const recipientEmail = 'rohitvalanki@gmail.com';
+      const subject = name + " - " + vehicleModel;
+      const themessage = `<!DOCTYPE html>
+        <html>
+        <head>
+          <title>Contact Form</title>
+        </head>
+        <body style = "font-color: black;">
+          <h1>Contact Information</h1>
+          <div>
+            <p><strong>Name:</strong> ${name} </p>
+            <p><strong>Email:</strong> ${email }</p>
+            <p><strong>Phone Number:</strong> ${phone} </p>
+            <p><strong>Vehicle Number:</strong> ${vehicleModel} </p>
+            <p><strong>Message:</strong> ${message} </p>
+          </div>
+        </body>
+        </html>
+      `;
 
-    if(validateEmail(email) && validatePhoneNumber(phone)){
-    // Hardcoded values for testing
-    const senderEmail = 'centerstar-inquiries@resend.dev';
-    const recipientEmail = 'rohitvalanki@gmail.com';
-    const subject = name + " - " + vehicleModel;
-    const themessage = `<!DOCTYPE html>
-    <html>
-    <head>
-      <title>Contact Form</title>
-    </head>
-    <body style = "font-color: black;">
-      <h1>Contact Information</h1>
-      <div>
-        <p><strong>Name:</strong> ${name} </p>
-        <p><strong>Email:</strong> ${email }</p>
-        <p><strong>Phone Number:</strong> ${phone} </p>
-        <p><strong>Vehicle Number:</strong> ${vehicleModel} </p>
-        <p><strong>Message:</strong> ${message} </p>
-      </div>
-    </body>
-    </html>
-    `;
+      try {
+        const response = await fetch('http://localhost:3001/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: senderEmail,
+            to: recipientEmail,
+            subject,
+            html: themessage,
+          }),
+        });
 
-    try {
-      const response = await fetch('http://localhost:3001/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: senderEmail,
-          to: recipientEmail,
-          subject,
-          html: themessage,
-        }),
-      });
+        const data = await response.json();
+        if (response.ok) {
+          console.log('Email sent successfully:', data);
 
-      const data = await response.json();
-      if (response.ok) {
-        console.log('Email sent successfully:', data);
-      } else {
-        console.error('Error sending email:', data);
+          if(data.error == null){
+            handleEmailSuccess(true);
+          }
+          else{
+            handleEmailSuccess(false);
+          }
+      
+           // Call the parent component function with success status
+        } else {
+          console.error('Error sending email:', data);
+          handleEmailSuccess(false); // Call the parent component function with failure status
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        handleEmailSuccess(false); // Call the parent component function with failure status
       }
-    } catch (error) {
-      console.error('Error:', error);
     }
-  }
-
   };
 
   return (
