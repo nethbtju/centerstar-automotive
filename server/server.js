@@ -9,7 +9,7 @@ const port = 3001;
 app.use(cors());
 app.use(bodyParser.json());
 
-const resend = new Resend('re_g7ycotyG_BbYkHXBThZwWTKGUKEZ4QL3d');
+const resend = new Resend('re_3M6ARjEN_LyqMxzsy9bFqLfQUKWhLGao5');
 
 app.post('/send-email', async (req, res) => {
   const { from, to, subject, html } = req.body;
