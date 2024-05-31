@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
-import logo from "../img/contact-card-image.png";
+import logo from '../img/contact-card-image.png';
 
 const svgIcon = (
   <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -9,6 +9,51 @@ const svgIcon = (
 );
 
 const ContactCard = ({ children }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    vehicleModel: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const sendEmail = async () => {
+    // Hardcoded values for testing
+    const senderEmail = 'centerstar-inquiries@resend.dev';
+    const recipientEmail = 'rohitvalanki@gmail.com';
+    const subject = 'Test Email from Mao';
+    const message = '<p>This is a test email from the Contact Card component.</p>';
+
+    try {
+      const response = await fetch('http://localhost:3001/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: senderEmail,
+          to: recipientEmail,
+          subject,
+          html: message,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Email sent successfully:', data);
+      } else {
+        console.error('Error sending email:', data);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className="bg-black rounded-lg px-6 py-4 text-white mt-16 mx-auto" style={{ width: '85%', border: '1px solid #616161', borderRadius: '16px', position: 'relative' }}>
       <h1 className="font-inria font-bold text-3xl mb-4 px-20 py-12 pb-0">Contact Us</h1>
@@ -18,38 +63,53 @@ const ContactCard = ({ children }) => {
       <div className="flex">
         {/* Left Column */}
         <div className="w-1/2">
-            <div className="flex flex-col">
-              <input
-                type="text"
-                placeholder="Name"
-                className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-1 ml-9"
-                style={{ borderRadius: '10px', border: '1px solid white' }}
-              />
-              <input
-                type="text"
-                placeholder="Email"
-                className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9"
-                style={{ borderRadius: '10px', border: '1px solid white' }}
-              />
-              <input
-                type="tel"
-                placeholder="Phone number"
-                className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9"
-                style={{ borderRadius: '10px', border: '1px solid white' }}
-              />
-              <input
-                type="text"
-                placeholder="Vehicle Model"
-                className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9"
-                style={{ borderRadius: '10px', border: '1px solid white' }}
-              />
-              <input
-                type="text"
-                placeholder="Enter message"
-                className="font-inter bg-black text-white border border-white rounded-lg px-2 py-16 mt-5 ml-9"
-                style={{ borderRadius: '10px', border: '1px solid white' }}
-              />
-            </div>
+          <div className="flex flex-col">
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-1 ml-9"
+              style={{ borderRadius: '10px', border: '1px solid white' }}
+            />
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9"
+              style={{ borderRadius: '10px', border: '1px solid white' }}
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone number"
+              value={formData.phone}
+              onChange={handleChange}
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9"
+              style={{ borderRadius: '10px', border: '1px solid white' }}
+            />
+            <input
+              type="text"
+              name="vehicleModel"
+              placeholder="Vehicle Model"
+              value={formData.vehicleModel}
+              onChange={handleChange}
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9"
+              style={{ borderRadius: '10px', border: '1px solid white' }}
+            />
+            <input
+              type="text"
+              name="message"
+              placeholder="Enter message"
+              value={formData.message}
+              onChange={handleChange}
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-16 mt-5 ml-9"
+              style={{ borderRadius: '10px', border: '1px solid white' }}
+            />
+          </div>
         </div>
 
         {/* Right Column */}
@@ -59,9 +119,16 @@ const ContactCard = ({ children }) => {
           </div>
         </div>
       </div>
-      
+
       <div className="flex ml-9 mt-5 pb-10">
-          <Button btnText="Send" type="hover:bg-nav-color hover:text-highlight-color hover:cursor-pointer bg-highlight-color text-black" height="h-8" width="w-100" icon={svgIcon} />
+        <Button
+          btnText="Send"
+          type="hover:bg-nav-color hover:text-highlight-color hover:cursor-pointer bg-highlight-color text-black"
+          height="h-8"
+          width="w-100"
+          icon={svgIcon}
+          onClick={sendEmail}
+        />
       </div>
 
       {children}
