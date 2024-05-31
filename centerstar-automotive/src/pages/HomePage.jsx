@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from 'react-router-dom';
 import Card from "../components/Card";
 import card1 from "../img/card-assets/card1.jpg";
 import card2 from "../img/card-assets/card2.jpg";
@@ -8,40 +9,78 @@ import card5 from "../img/card-assets/card5.jpg";
 import card6 from "../img/card-assets/card6.jpg";
 import Map from "../components/Map";
 import ContactCard from "../components/ContactCard";
+import axios from 'axios';
 
 function HomePage() {
-  return (
-    <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-[255%]">
-      <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
-        Mercedes Benz Specialist
-      </h1>
+    const location = useLocation();
+    const [cardContent, setCardContent] = useState({});
+    const [isLoaded, setIsLoaded] = useState(false);
 
-      {/* First row of cards */}
-      <div className="flex justify-center pt-8 space-x-4">
-        <Card imageUrl={card1} title="Repairs" /> {/* Pass card1 image and title */}
-        <div className="px-2"></div>
-        <Card imageUrl={card2} title="Diagnostic" /> {/* Pass card2 image and title */}
-        <div className="px-2"></div>
-        <Card imageUrl={card3} title="Air Conditioning" /> {/* Pass card3 image and title */}
-      </div>
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/pageText.txt');
+                const data = response.data;
+                if (data) {
+                    const formattedData = {
+                        repairs: { title: data.repairs.title, card_text: data.repairs.card_text },
+                        diagnostics: { title: data.diagnostics.title, card_text: data.diagnostics.card_text },
+                        air_conditioning: { title: data.air_conditioning.title, card_text: data.air_conditioning.card_text },
+                        electrical: { title: data.electrical.title, card_text: data.electrical.card_text },
+                        services: { title: data.services.title, card_text: data.services.card_text },
+                        and_more: { title: data.and_more.title, card_text: data.and_more.card_text },
+                    };
+                    setCardContent(formattedData);
+                }
+            } catch (error) {
+                console.error('Error fetching the data', error);
+            } finally {
+                setIsLoaded(true);
+            }
+        };
+        fetchData();
+    }, []);
 
-      {/* Second row of cards */}
-      <div className="flex justify-center pt-8 space-x-4">
-        <Card imageUrl={card4} title="Electrical" /> {/* Pass card4 image and title */}
-        <div className="px-2"></div>
-        <Card imageUrl={card5} title="Services" /> {/* Pass card5 image and title */}
-        <div className="px-2"></div>
-        <Card imageUrl={card6} title="And more..." /> {/* Pass card6 image and title */}
-      </div>
+    useEffect(() => {
+        if (isLoaded && location.state?.scrollToContact) {
+            const contactCard = document.getElementById("contact-card");
+            if (contactCard) {
+                contactCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    }, [isLoaded, location]);
 
-      <ContactCard />
+    const cardImages = [card1, card2, card3, card4, card5, card6];
 
-      <h3 className="font-inria text-white pt-20 pb-4 text-[32px] text-center">
-        Find us
-      </h3>
-      <Map address="4 Vesper Dr, Narre Warren VIC 3805" />
-    </div>
-  );
+    return (
+        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-auto">
+            <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
+                Mercedes Benz Specialist
+            </h1>
+
+            {Object.keys(cardContent).length === 0 ? (
+                <div className="text-white text-center">Loading cards...</div>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
+                    {Object.keys(cardContent).map((key, index) => (
+                        <Card
+                            key={key}
+                            keyName={key}
+                            imageUrl={cardImages[index]}
+                            title={cardContent[key].title}
+                            content={cardContent[key].card_text}
+                        />
+                    ))}
+                </div>
+            )}
+
+            <ContactCard id="contact-card" />
+            <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
+                Find us
+            </h3>
+            <Map address="4 Vesper Dr, Narre Warren VIC 3805" />
+        </div>
+    );
 }
 
 export default HomePage;
