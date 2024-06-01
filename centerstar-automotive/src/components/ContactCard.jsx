@@ -89,6 +89,17 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
 
           if(data.error == null){
             handleEmailSuccess(true);
+
+            setTimeout(() => {
+            setFormData({
+              name: '',
+              email: '',
+              phone: '',
+              vehicleModel: '',
+              message: '',
+            });
+          }, 3000);
+
           }
           else{
             handleEmailSuccess(false);
