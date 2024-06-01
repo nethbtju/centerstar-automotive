@@ -23,9 +23,9 @@ function NavigationBar() {
     };
 
     return (
-        <div className="bg-nav-color w-full flex flex-col sm:flex-row items-center justify-between sm:ps-10 sm:pe-10 sm:p-4">
+        <div className="bg-nav-color w-full flex flex-col sm:flex-row items-center justify-between sm:ps-10 sm:pe-10 sm:p-4 py-2 sm:py-4">
             <img src={logo} alt="logo" className="w-64 mb-1 sm:mb-0"/>
-            <section className="flex flex-row gap-3 sm:w-auto sm:pl-4">
+            <section className="flex flex-row gap-3 sm:w-auto sm:pl-4 py-2 sm:py-0">
                 {location.pathname === '/' ? (
                     <Button onClick={handleAboutClick} key="main" btnText="About Us" type="hover:bg-highlight-color hover:text-nav-color hover:cursor-pointer text-highlight-color"/>
                 ) : (

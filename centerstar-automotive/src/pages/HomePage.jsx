@@ -81,7 +81,7 @@ function HomePage() {
             {Object.keys(cardContent).length === 0 ? (
                 <div className="text-white text-center">Loading cards...</div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-20">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 sm:px-20">
                     {Object.keys(cardContent).map((key, index) => (
                         <Card
                             key={key}
