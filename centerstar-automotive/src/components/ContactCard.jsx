@@ -112,7 +112,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
       className="bg-black rounded-lg px-6 py-4 text-white mt-16 mx-auto"
       style={{ width: '85%', border: '1px solid #616161', borderRadius: '16px', position: 'relative' }}
     >
-      <h1 className="font-inria font-bold text-3xl mb-4 px-20 py-12 pb-0">Contact Us</h1>
+      <h1 className="font-inria font-bold text-3xl mb-4 px-0 md:px-20 py-12 pb-0 text-center md:text-left">Contact Us</h1>
       <label htmlFor="issue" className="font-inria block mb-2 px-10" style={{ fontWeight: 400 }}>Tell us the issue:</label>
   
       {/* Two-Column Layout */}
@@ -174,9 +174,9 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
         </div>
   
         {/* Right Column */}
-        <div className="hidden md:flex w-full md:w-1/2 items-end justify-end" style={{ position: 'absolute', bottom: 0, right: 0 }}>
+        <div className="hidden md:flex w-full md:w-1/2 items-end justify-end " style={{ position: 'absolute', bottom: 0, right: 0 }}>
           <div className="w-2/3 h-auto" style={{ transformOrigin: 'bottom right', transform: 'scale(1.35)', overflow: 'hidden' }}>
-            <img src={logo} alt="Image" className="w-full h-auto object-cover" />
+            <img src={logo} alt="Image" className="w-full h-auto object-cover"/>
           </div>
         </div>
       </div>
