@@ -73,7 +73,7 @@ function HomePage() {
     const cardImages = [card1, card2, card3, card4, card5, card6];
 
     return (
-        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-auto">
+        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-[240%]">
             <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
                 Mercedes Benz Specialist
             </h1>
