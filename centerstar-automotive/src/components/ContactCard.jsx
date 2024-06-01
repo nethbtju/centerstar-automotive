@@ -107,14 +107,18 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
   };
 
   return (
-    <div id="contact-card" className="bg-black rounded-lg px-6 py-4 text-white mt-16 mx-auto" style={{ width: '85%', border: '1px solid #616161', borderRadius: '16px', position: 'relative' }}>
+    <div
+      id="contact-card"
+      className="bg-black rounded-lg px-6 py-4 text-white mt-16 mx-auto"
+      style={{ width: '85%', border: '1px solid #616161', borderRadius: '16px', position: 'relative' }}
+    >
       <h1 className="font-inria font-bold text-3xl mb-4 px-20 py-12 pb-0">Contact Us</h1>
       <label htmlFor="issue" className="font-inria block mb-2 px-10" style={{ fontWeight: 400 }}>Tell us the issue:</label>
-
+  
       {/* Two-Column Layout */}
       <div className="flex">
         {/* Left Column */}
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <div className="flex flex-col">
             <input
               type="text"
@@ -122,39 +126,39 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               placeholder="Name"
               value={formData.name}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-1 ml-9"
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-1 ml-9 sm: mr-9 lg:mr-0"
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
-
+  
             <input
               type="text"
               name="email"
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9"
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9 sm: mr-9 lg:mr-0"
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
             <p className="text-sm font-sans text-red-500 px-10 py-1">{emailError}</p>
-
+  
             <input
               type="tel"
               name="phone"
               placeholder="Phone number"
               value={formData.phone}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9"
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9 sm: mr-9 lg:mr-0"
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
             <p className="text-sm font-sans text-red-500 px-10 py-1">{phoneError}</p>
-
+  
             <input
               type="text"
               name="vehicleModel"
               placeholder="Vehicle Model"
               value={formData.vehicleModel}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9"
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9 sm: mr-9 lg:mr-0"
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
             <input
@@ -163,21 +167,21 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               placeholder="Enter message"
               value={formData.message}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-16 mt-5 ml-9"
+              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-16 mt-5 ml-9 sm: mr-9 lg:mr-0"
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
           </div>
         </div>
-
+  
         {/* Right Column */}
-        <div className="w-1/2 flex items-end justify-end" style={{ position: 'absolute', bottom: 0, right: 0 }}>
+        <div className="hidden md:flex w-full md:w-1/2 items-end justify-end" style={{ position: 'absolute', bottom: 0, right: 0 }}>
           <div className="w-2/3 h-auto" style={{ transformOrigin: 'bottom right', transform: 'scale(1.35)', overflow: 'hidden' }}>
             <img src={logo} alt="Image" className="w-full h-auto object-cover" />
           </div>
         </div>
       </div>
-
-      <div className="flex ml-9 mt-5 pb-10">
+  
+      <div className="flex ml-9 mt-5 pb-10 sm: mr-9 lg:mr-0">
         <Button
           btnText="Send"
           type="hover:bg-nav-color hover:text-highlight-color hover:cursor-pointer bg-highlight-color text-black"
@@ -187,10 +191,11 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
           onClick={sendEmail}
         />
       </div>
-
+  
       {children}
     </div>
   );
-};
-
-export default ContactCard;
+  };
+  
+  export default ContactCard;
+  
