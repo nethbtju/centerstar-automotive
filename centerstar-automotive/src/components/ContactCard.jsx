@@ -109,8 +109,8 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
   return (
     <div
       id="contact-card"
-      className="bg-black rounded-lg px-6 py-4 text-white mt-16 mx-auto"
-      style={{ width: '85%', border: '1px solid #616161', borderRadius: '16px', position: 'relative' }}
+      className="bg-black rounded-lg px-6 py-4 text-white mt-16"
+      style={{ border: '1px solid #616161', borderRadius: '16px', position: 'relative' }}
     >
       <h1 className="font-inria font-bold text-3xl mb-4 px-20 py-12 pb-0">Contact Us</h1>
       <label htmlFor="issue" className="font-inria block mb-2 px-10" style={{ fontWeight: 400 }}>Tell us the issue:</label>

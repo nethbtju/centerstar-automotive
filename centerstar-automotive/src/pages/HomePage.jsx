@@ -73,15 +73,15 @@ function HomePage() {
     const cardImages = [card1, card2, card3, card4, card5, card6];
 
     return (
-        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 sm:h-[240%]">
-            <h1 className="font-inria font-bold text-white pt-16 pb-6 text-3xl sm:text-4xl text-center">
+        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 p-16">
+            <h1 className="font-inria font-bold text-white pb-6 text-3xl sm:text-4xl text-center">
                 Mercedes Benz Specialist
             </h1>
 
             {Object.keys(cardContent).length === 0 ? (
                 <div className="text-white text-center">Loading cards...</div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {Object.keys(cardContent).map((key, index) => (
                         <Card
                             key={key}
@@ -93,10 +93,10 @@ function HomePage() {
                     ))}
                 </div>
             )}
-            
+
             {/* SimpleAlert component to display email sending status */}
             {showAlert && <SimpleAlert message={alertMessage} isSuccess={isSuccess} />}
-      
+
             <ContactCard id="contact-card" handleEmailSuccess={handleEmailSuccess} />
             <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
                 Find us

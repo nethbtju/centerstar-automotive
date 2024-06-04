@@ -10,7 +10,7 @@ export default function App() {
        <Router>
            <NavigationBar/>
            <div className="flex flex-col">
-               <div className="app-body bg-bg-back-color flex flex-row justify-center">
+               <div className="app-body bg-bg-back-color">
                    <Routes>
                        <Route path="/" element={<HomePage/>}/>
                        <Route path="/about-us/:key" element={<AboutPage/>}/>

@@ -10,15 +10,27 @@
     overflow-y: scroll;
   }
   .app-body {
-    @apply bg-main-bkg h-screen bg-no-repeat bg-cover bg-bg-back-color;
+    @apply bg-main-bkg w-full h-screen bg-no-repeat bg-cover bg-bg-back-color;
+    display: grid;
+    place-items: center;
   }
+
+  .app-body::after {
+    content: "";
+    background-color: black;
+  }
+
+  @media (max-width: 500px) {
+    .app-body {
+      display: block;
+    }
+  }
+
   .app-end {
     @apply bg-end-bkg w-[100%] h-screen bg-no-repeat bg-cover bg-bg-back-color;
   }
-  body {
-    @apply bg-bg-back-color;
-  }
 }
+
 .map-container {
   height: 200px;
 }
