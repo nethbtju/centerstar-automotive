@@ -74,7 +74,7 @@ function HomePage() {
 
     return (
         <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 p-0 sm:p-16">
-            <h1 className="font-inria font-bold text-white pb-6 text-3xl sm:text-4xl text-center">
+            <h1 className="font-inria font-bold text-white pb-6 text-3xl sm:text-4xl text-center pt-12 sm:pt-0">
                 Mercedes Benz Specialist
             </h1>
 
