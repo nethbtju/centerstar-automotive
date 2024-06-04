@@ -73,7 +73,7 @@ function HomePage() {
     const cardImages = [card1, card2, card3, card4, card5, card6];
 
     return (
-        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 p-16">
+        <div className="w-full sm:w-[70%] bg-bg-grey-color bg-opacity-60 p-0 sm:p-16">
             <h1 className="font-inria font-bold text-white pb-6 text-3xl sm:text-4xl text-center">
                 Mercedes Benz Specialist
             </h1>
@@ -81,7 +81,8 @@ function HomePage() {
             {Object.keys(cardContent).length === 0 ? (
                 <div className="text-white text-center">Loading cards...</div>
             ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 sm:px-0">
+                  
                     {Object.keys(cardContent).map((key, index) => (
                         <Card
                             key={key}
