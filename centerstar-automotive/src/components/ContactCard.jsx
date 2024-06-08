@@ -212,7 +212,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
             <input
               type="text"
               name="vehicleModel"
-              placeholder="Vehicle Model"
+              placeholder="VIN"
               value={formData.vehicleModel}
               onChange={handleChange}
               className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9 sm: mr-9 lg:mr-0"
