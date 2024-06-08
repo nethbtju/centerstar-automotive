@@ -31,7 +31,7 @@
   },
   "main": {
     "title": "About Us",
-    "content": "Sam",
+    "content": "Oops! Something went wrong!",
     "card_text": "Learn more about Sam."
   }
 }
