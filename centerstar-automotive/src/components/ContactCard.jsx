@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import logo from '../img/contact-card-image.png';
 import SimpleAlert from './SimpleAlert'; // Import SimpleAlert component
@@ -32,6 +32,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
 
   const [emailError, setEmailError] = useState('');
   const [phoneError, setPhoneError] = useState('');
+  const [scale, setScale] = useState(0.95);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,7 +61,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
           <h1>Contact Information</h1>
           <div>
             <p><strong>Name:</strong> ${name} </p>
-            <p><strong>Email:</strong> ${email }</p>
+            <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone Number:</strong> ${phone} </p>
             <p><strong>Vehicle Number:</strong> ${vehicleModel} </p>
             <p><strong>Message:</strong> ${message} </p>
@@ -87,25 +88,25 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
         if (response.ok) {
           console.log('Email sent successfully:', data);
 
-          if(data.error == null){
+          if (data.error == null) {
             handleEmailSuccess(true);
 
             setTimeout(() => {
-            setFormData({
-              name: '',
-              email: '',
-              phone: '',
-              vehicleModel: '',
-              message: '',
-            });
-          }, 3000);
+              setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                vehicleModel: '',
+                message: '',
+              });
+            }, 3000);
 
           }
-          else{
+          else {
             handleEmailSuccess(false);
           }
-      
-           // Call the parent component function with success status
+
+          // Call the parent component function with success status
         } else {
           console.error('Error sending email:', data);
           handleEmailSuccess(false); // Call the parent component function with failure status
@@ -117,6 +118,28 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
     }
   };
 
+  useEffect(() => {
+    const updateScale = () => {
+      const newScale = window.innerWidth > 1800 ? 0.95 : 1.35; // Adjust scale based on window width
+      setScale(newScale);
+    };
+
+    updateScale(); // Call once on component mount
+
+    // Debounce the resize event to improve performance and avoid conflicts
+    let timeoutId;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(updateScale, 150); // Adjust debounce timeout as needed
+    };
+
+    window.addEventListener('resize', handleResize); // Update scale on window resize
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Cleanup on component unmount
+    };
+  }, []);
+  
   return (
     <div
       id="contact-card"
@@ -125,7 +148,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
     >
       <h1 className="font-inria font-bold text-3xl mb-4 px-0 md:px-20 py-12 pb-0 text-center md:text-left">Contact Us</h1>
       <label htmlFor="issue" className="font-inria block mb-2 px-10" style={{ fontWeight: 400 }}>Tell us the issue:</label>
-  
+
       {/* Two-Column Layout */}
       <div className="flex">
         {/* Left Column */}
@@ -140,7 +163,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-1 ml-9 sm: mr-9 lg:mr-0"
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
-  
+
             <input
               type="text"
               name="email"
@@ -151,7 +174,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
             <p className="text-sm font-sans text-red-500 px-10 py-1">{emailError}</p>
-  
+
             <input
               type="tel"
               name="phone"
@@ -162,7 +185,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
             <p className="text-sm font-sans text-red-500 px-10 py-1">{phoneError}</p>
-  
+
             <input
               type="text"
               name="vehicleModel"
@@ -183,16 +206,16 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
             />
           </div>
         </div>
-  
+
         {/* Right Column */}
         <div className="hidden md:flex w-full md:w-1/2 items-end justify-end " style={{ position: 'absolute', bottom: 0, right: 0 }}>
-  <div className="w-2/3 h-auto" style={{ transformOrigin: 'bottom right', transform: `scale(${window.innerWidth > 1800 ? 0.95 : 1.35})`, overflow: 'hidden' }}>
-    <img src={logo} alt="Image" className="w-full h-auto object-cover"/>
-  </div>
-</div>
+          <div className="w-2/3 h-auto" style={{ transformOrigin: 'bottom right', transform: `scale(${window.innerWidth > 1900 ? 0.95 : 1.35})`, overflow: 'hidden' }}>
+            <img src={logo} alt="Image" className="w-full h-auto object-cover" />
+          </div>
+        </div>
 
       </div>
-  
+
       <div className="flex ml-9 mt-5 pb-10 sm: mr-9 lg:mr-0">
         <Button
           btnText="Send"
@@ -203,11 +226,11 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
           onClick={sendEmail}
         />
       </div>
-  
+
       {children}
     </div>
   );
-  };
-  
-  export default ContactCard;
-  
+};
+
+export default ContactCard;
+
