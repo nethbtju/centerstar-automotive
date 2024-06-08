@@ -186,7 +186,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
   
         {/* Right Column */}
         <div className="hidden md:flex w-full md:w-1/2 items-end justify-end " style={{ position: 'absolute', bottom: 0, right: 0 }}>
-  <div className="w-2/3 h-auto" style={{ transformOrigin: 'bottom right', transform: `scale(${window.innerWidth > 1970 ? 0.95 : 1.35})`, overflow: 'hidden' }}>
+  <div className="w-2/3 h-auto" style={{ transformOrigin: 'bottom right', transform: `scale(${window.innerWidth > 1800 ? 0.95 : 1.35})`, overflow: 'hidden' }}>
     <img src={logo} alt="Image" className="w-full h-auto object-cover"/>
   </div>
 </div>
