@@ -33,7 +33,8 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
   const [emailError, setEmailError] = useState('');
   const [phoneError, setPhoneError] = useState('');
   const [scale, setScale] = useState(0.95);
-  const [display, setDisplay] = useState('display')
+  const [display, setDisplay] = useState('display');
+  const [inputWidth, setInputWidth] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -121,7 +122,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
 
   useEffect(() => {
     const updateScale = () => {
-      const newScale = window.innerWidth > 1900 ? 0.95 : (window.innerWidth < 1400 ? 1.4 : 1.35); // Adjust scale based on window width
+      const newScale = window.innerWidth > 1900 ? 0.95 : (window.innerWidth < 1300 ? 1.4 : 1.35); // Adjust scale based on window width
       setScale(newScale);
     };
 
@@ -163,10 +164,24 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setInputWidth(window.innerWidth < 1050 && window.innerWidth > 640 ? 'w-100 ml-64 mr-64' : (window.innerWidth < 1050 ? 'w-100' : ''));
+    };
+
+    handleResize(); // Call once on component mount
+
+    window.addEventListener('resize', handleResize); // Update inputWidth on window resize
+
+    return () => {
+      window.removeEventListener('resize', handleResize); // Cleanup on component unmount
+    };
+  }, []);
+
   return (
     <div
       id="contact-card"
-      className="bg-black rounded-lg px-6 py-4 text-white mt-16"
+      className={`bg-black rounded-lg px-6 py-4 text-white mt-16 ${window.innerWidth < 1050 && window.innerWidth > 640 ? 'flex flex-col items-center' : ''}`}
       style={{ border: '1px solid #616161', borderRadius: '16px', position: 'relative' }}
     >
       <h1 className="font-inria font-bold text-3xl mb-4 px-0 md:px-20 py-12 pb-0 text-center md:text-left">Contact Us</h1>
@@ -183,7 +198,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               placeholder="Name"
               value={formData.name}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-1 ml-9 sm: mr-9 lg:mr-0"
+              className={`font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-1 ml-9 sm: mr-9 lg:mr-0 ${window.innerWidth < 900 && window.innerWidth > 640 ? 'w-100 ml-64 mr-64'  : (window.innerWidth < 1050 && window.innerWidth > 640 ? 'w-100' : '')}`}
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
 
@@ -193,7 +208,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               placeholder="Email"
               value={formData.email}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9 sm: mr-9 lg:mr-0"
+              className={`font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-5 ml-9 sm: mr-9 lg:mr-0 ${window.innerWidth < 900 && window.innerWidth > 640 ? 'w-100 ml-64 mr-64'  : (window.innerWidth < 1050 && window.innerWidth > 640 ? 'w-100' : '')}`}
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
             <p className="text-sm font-sans text-red-500 px-10 py-1">{emailError}</p>
@@ -204,7 +219,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               placeholder="Phone number"
               value={formData.phone}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9 sm: mr-9 lg:mr-0"
+              className={`font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9 sm: mr-9 lg:mr-0 ${window.innerWidth < 900 && window.innerWidth > 640 ? 'w-100 ml-64 mr-64'  : (window.innerWidth < 1050 && window.innerWidth > 640 ? 'w-100' : '')}`}
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
             <p className="text-sm font-sans text-red-500 px-10 py-1">{phoneError}</p>
@@ -215,7 +230,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               placeholder="VIN"
               value={formData.vehicleModel}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9 sm: mr-9 lg:mr-0"
+              className={`font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9 sm: mr-9 lg:mr-0 ${window.innerWidth < 900 && window.innerWidth > 640 ? 'w-100 ml-64 mr-64'  : (window.innerWidth < 1050 && window.innerWidth > 640 ? 'w-100' : '')}`}
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
             <input
@@ -224,11 +239,11 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
               placeholder="Enter message"
               value={formData.message}
               onChange={handleChange}
-              className="font-inter bg-black text-white border border-white rounded-lg px-2 py-16 mt-5 ml-9 sm: mr-9 lg:mr-0"
+              className={`font-inter bg-black text-white border border-white rounded-lg px-2 py-16 mt-5 ml-9 sm: mr-9 lg:mr-0 ${window.innerWidth < 900 && window.innerWidth > 640 ? 'w-100 ml-64 mr-64'  : (window.innerWidth < 1050 && window.innerWidth > 640 ? 'w-100' : '')}`}
               style={{ borderRadius: '10px', border: '1px solid white' }}
             />
 
-            <div className="flex ml-9 mt-5 pb-10 sm: mr-9 lg:mr-0">
+            <div className={`flex ml-9 mt-5 pb-10 sm: mr-9 lg:mr-0 ${window.innerWidth < 900 && window.innerWidth > 640 ? 'w-100 ml-64 mr-64'  : (window.innerWidth < 1050 && window.innerWidth > 640 ? 'w-100' : '')}`}>
               <Button
                 btnText="Send"
                 type="hover:bg-nav-color hover:text-highlight-color hover:cursor-pointer bg-highlight-color text-black"
@@ -243,7 +258,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
 
         {/* Right Column */}
         <div className="hidden md:flex w-full md:w-1/2 items-end justify-end " style={{ position: 'absolute', bottom: 0, right: 0, display: window.innerWidth <= 1150 ? 'none' : '' }}>
-          <div className="w-2/3 h-auto" style={{ transformOrigin: 'bottom right', transform: `scale(${window.innerWidth > 1900 ? 0.95 : (window.innerWidth < 1400 ? 1.4 : 1.35)})`, overflow: 'hidden' }}>
+          <div className="w-2/3 h-auto" style={{ transformOrigin: 'bottom right', transform: `scale(${window.innerWidth > 1900 ? 0.95 : (window.innerWidth < 1300 ? 1.4 : 1.35)})`, overflow: 'hidden' }}>
             <img src={logo} alt="Image" className="w-full h-auto object-cover" />
           </div>
         </div>
