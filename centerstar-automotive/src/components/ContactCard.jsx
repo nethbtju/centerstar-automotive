@@ -185,7 +185,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
       style={{ border: '1px solid #616161', borderRadius: '16px', position: 'relative' }}
     >
       <h1 className="font-inria font-bold text-3xl mb-4 px-0 md:px-20 py-12 pb-0 text-center md:text-left">Contact Us</h1>
-      <label htmlFor="issue" className="font-inria block mb-2 px-10" style={{ fontWeight: 400 }}>Tell us the issue:</label>
+      <label htmlFor="issue" className="font-inria block mb-2 px-10" style={{ fontWeight: 400 }}>Tell us your concern:</label>
 
       {/* Two-Column Layout */}
       <div className="flex">
@@ -227,7 +227,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
             <input
               type="text"
               name="vehicleModel"
-              placeholder="VIN"
+              placeholder="VIN / Rego"
               value={formData.vehicleModel}
               onChange={handleChange}
               className={`font-inter bg-black text-white border border-white rounded-lg px-2 py-2 mt-3 ml-9 sm: mr-9 lg:mr-0 ${window.innerWidth < 900 && window.innerWidth > 640 ? 'w-100 ml-64 mr-64'  : (window.innerWidth < 1050 && window.innerWidth > 640 ? 'w-100' : '')}`}
