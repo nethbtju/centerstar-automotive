@@ -2,7 +2,7 @@
 
 # Navigate to the server directory and start the Node.js server
 cd server
-node server.js &
+NODE_ENV=development node server.js &
 
 # Navigate back to the root directory
 cd ..
