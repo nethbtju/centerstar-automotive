@@ -2,6 +2,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { Resend } from 'resend';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../.env' });
 
 const app = express();
 const port = 3001;
@@ -9,7 +12,8 @@ const port = 3001;
 app.use(cors());
 app.use(bodyParser.json());
 
-const resend = new Resend('re_g7ycotyG_BbYkHXBThZwWTKGUKEZ4QL3d');
+const resend = new Resend(process.env.REACT_APP_API_KEY_TEST);
+
 
 app.post('/send-email', async (req, res) => {
   const { from, to, subject, html } = req.body;
