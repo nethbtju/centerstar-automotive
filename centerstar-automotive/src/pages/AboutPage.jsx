@@ -129,18 +129,18 @@ function AboutPage() {
                     </p>
                 </div>
             ) : (
-                <>
-                    <h1 className="font-inria font-bold text-white pb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-center">
+                <div className="h-screen">
+                    <h1 className="font-inria font-bold text-white pb-6 text-3xl xl:text-3xl 2xl:text-5xl text-center">
                         {title}
                     </h1>
-                    <ul className="ps-11 pe-11 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl text-white">
+                    <ul className="font-inria text-sm xl:text-xl 2xl:text-3xl text-white pb-6 pl-5">
                         {text.map((item, index) => (
                             <li className="list-item" key={index} dangerouslySetInnerHTML={{__html: item}}></li>
                         ))}
                     </ul>
                     <br/>
                     <br/>
-                </>
+                </div>
             )}
         </div>
     );
