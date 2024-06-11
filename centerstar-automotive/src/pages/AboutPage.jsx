@@ -105,11 +105,6 @@ function AboutPage() {
                             receives the expert care it deserves.
                         </li>
                         <li>
-                            <strong>Continuous Training & Innovation:</strong> By investing in ongoing training and
-                            state-of-the-art diagnostic equipment, we stay at the forefront of automotive technology to
-                            provide consistent, high-quality service.
-                        </li>
-                        <li>
                             <strong>Customer-Centric Philosophy:</strong> Your satisfaction is our success. We work
                             tirelessly to surpass your expectations and earn your trust with every interaction.
                         </li>
