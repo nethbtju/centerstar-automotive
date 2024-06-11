@@ -12,7 +12,7 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(bodyParser.json());
 
-const resend = new Resend(process.env.REACT_APP_API_KEY_TEST);
+const resend = new Resend(process.env.REACT_APP_API_KEY_PROD);
 
 app.post('/send-email', async (req, res) => {
   const { from, to, subject, html } = req.body;
