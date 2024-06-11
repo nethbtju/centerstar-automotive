@@ -81,7 +81,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
           body: JSON.stringify({
             from: senderEmail,
             to: recipientEmail,
-            subject,
+            subject: subject,
             html: themessage,
           }),
         });
