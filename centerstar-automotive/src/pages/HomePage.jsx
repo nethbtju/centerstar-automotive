@@ -81,8 +81,8 @@ function HomePage() {
             {Object.keys(cardContent).length === 0 ? (
                 <div className="text-white text-center">Loading cards...</div>
             ) : (
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 sm:px-0">
-                  
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-8 sm:px-0">
+
                     {Object.keys(cardContent).map((key, index) => (
                         <Card
                             key={key}
@@ -94,7 +94,7 @@ function HomePage() {
                     ))}
                 </div>
             )}
-
+            <div className="font-inria font-extralight italic text-white justify-center text-center pt-14">"You should own a Mercedes at least once in your lifetime"</div>
             {/* SimpleAlert component to display email sending status */}
             {showAlert && <SimpleAlert message={alertMessage} isSuccess={isSuccess} />}
 

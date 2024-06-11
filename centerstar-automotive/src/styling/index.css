@@ -27,7 +27,7 @@
   }
 
   .app-end {
-    @apply bg-end-bkg w-[100%] h-screen bg-no-repeat bg-cover bg-bg-back-color;
+    @apply bg-end-bkg mt-[50%] justify-end h-[85vh] bg-no-repeat bg-bg-back-color;
   }
 }
 
