@@ -11,6 +11,10 @@ import Map from "../components/Map";
 import ContactCard from "../components/ContactCard";
 import SimpleAlert from "../components/SimpleAlert";
 import axios from 'axios';
+import {MapIcon} from "@heroicons/react/24/outline";
+import {ChatBubbleLeftRightIcon} from "@heroicons/react/24/outline";
+import {ClockIcon} from "@heroicons/react/24/outline";
+
 
 function HomePage() {
   const location = useLocation();
@@ -94,11 +98,35 @@ function HomePage() {
                     ))}
                 </div>
             )}
-            <div className="font-inria font-extralight italic text-white justify-center text-center pt-14">"You should own a Mercedes at least once in your lifetime"</div>
+            <div className="font-inria font-extralight italic text-white justify-center text-center p-14">"You should own a Mercedes at least once in your lifetime"</div>
+            <div className="flex sm:flex-row flex-col gap-8 sm:gap-0">
+                <section className="flex flex-col text-white flex-1 justify-center gap-2">
+                    <MapIcon className="h-5 text-white"/>
+                    <span>
+                        <p className="text-center">Factory 7/4 Vesper Dr,</p>
+                        <p className="text-center">Narre Warren VIC 3805</p>
+                    </span>
+                </section>
+                <section className="flex flex-col text-white flex-1 justify-center gap-2">
+                <ChatBubbleLeftRightIcon className="h-5 text-white"/>
+                    <span>
+                        <p className="text-center">Tel: 0410 256 347</p>
+                        <p className="text-center">Email: centerstarautomotive@gmail.com</p>
+                    </span>
+                </section>
+                <section className="flex flex-col text-white flex-1 justify-center gap-2">
+                    <ClockIcon className="h-5"/>
+                    <span>
+                        <p className="text-center">Monday - Friday: 8:30 am - 6 pm</p>
+                        <p className="text-center">Saturday: 8:30 am - 3 pm</p>
+                        <p className="text-center">Sunday: Closed</p>
+                    </span>
+                </section>
+            </div>
             {/* SimpleAlert component to display email sending status */}
-            {showAlert && <SimpleAlert message={alertMessage} isSuccess={isSuccess} />}
+            {showAlert && <SimpleAlert message={alertMessage} isSuccess={isSuccess}/>}
 
-            <ContactCard id="contact-card" handleEmailSuccess={handleEmailSuccess} />
+            <ContactCard id="contact-card" handleEmailSuccess={handleEmailSuccess}/>
             <h3 className="font-inria text-white pt-12 pb-4 text-[32px] text-center">
                 Find us
             </h3>
