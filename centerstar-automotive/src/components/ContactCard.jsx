@@ -73,7 +73,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
       `;
 
       try {
-        const response = await fetch('https://centerstar-automotive-server-test.onrender.com/send-email', {
+        const response = await fetch('https://centerstar-automotive-server.onrender.com/send-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
           body: JSON.stringify({
             from: senderEmail,
             to: recipientEmail,
-            subject,
+            subject: subject,
             html: themessage,
           }),
         });
