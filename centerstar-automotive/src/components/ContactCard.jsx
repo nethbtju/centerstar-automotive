@@ -53,7 +53,7 @@ const ContactCard = ({ children, handleEmailSuccess }) => { // Add handleEmailSu
       // Hardcoded values for testing
       const senderEmail = 'centerstar-inquiries@resend.dev';
       const recipientEmail = 'centerstarautomotive@gmail.com';
-      const subject = name + " - " + vehicleModel;
+      const subject = JSON.stringify(name + " - " + vehicleModel);
       const themessage = `<!DOCTYPE html>
         <html>
         <head>
